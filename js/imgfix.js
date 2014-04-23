@@ -1,5 +1,7 @@
 /* *******************************
 
+-- Usage --
+
 $(element).imgfix({
 	fixin: 0,
 	hover: 1,
@@ -8,13 +10,15 @@ $(element).imgfix({
 	coverclass: '',
 	cover: {
 		slide: 'none',
-		fade: 'none',
+		fade: 'in',
 		scale: 'none',
 		easing: '',
 		delay: 0,
 		interval: 400
 	}
 });
+
+-- Values --
 
 cover-slide options:
 	none (default)
@@ -26,6 +30,7 @@ cover-slide options:
 	out-down
 	out-right
 	out-left
+    dynamic
 
 cover-fade options:
 	none
@@ -37,6 +42,15 @@ cover-scale options:
 	in
 	out
 
+Default value for 
+fixin             => 0
+hover             => 1
+interval          => 400
+easing            => ease
+cover-easing      => ease
+cover-delay       => 0
+cover-interval    => 400
+
 ******************************* */
 
 "use strict";
@@ -44,7 +58,7 @@ cover-scale options:
 	var bl_imgfix = {
 		family: new Array(),
 		init: function(family, rp) {
-			var param = family.parameters;
+			var param = family.parameters ? family.parameters : new Object();
 			var el = family.element;
 
 			if(!param.cover) param.cover = {};
@@ -56,7 +70,7 @@ cover-scale options:
 				defaultscale: param.defaultscale ? param.defaultscale : 1,
 				coverclass: param.coverclass ? param.coverclass : '',
 				cover: {
-					fade: param.cover.fade ? param.cover.fade : 'fade-in',
+					fade: param.cover.fade ? param.cover.fade : 'in',
 					slide: param.cover.slide ? param.cover.slide : 'none',
 					scale: param.cover.scale ? param.cover.scale : 'none',
 					easing: param.cover.easing ? param.cover.easing : '',
@@ -170,9 +184,6 @@ cover-scale options:
 								'#' + topID + ' .imgfix_cover_wrapper{' +
 									'position: absolute; z-index: 1;' +
 									'-webkit-transition: all ' + (parseInt($cover.data('interval')) / 1000) + 's ' + $cover.data('easing') + ' ' + (parseInt($cover.data('delay')) / 1000) + 's;' +
-									'-moz-transition: all ' + (parseInt($cover.data('interval')) / 1000) + 's ' + $cover.data('easing') + ' ' + (parseInt($cover.data('delay')) / 1000) + 's;' +
-									'-ms-transition: all ' + (parseInt($cover.data('interval')) / 1000) + 's ' + $cover.data('easing') + ' ' + (parseInt($cover.data('delay')) / 1000) + 's;' +
-									'-o-transition: all ' + (parseInt($cover.data('interval')) / 1000) + 's ' + $cover.data('easing') + ' ' + (parseInt($cover.data('delay')) / 1000) + 's;' +
 									'transition: all ' + (parseInt($cover.data('interval')) / 1000) + 's ' + $cover.data('easing') + ' ' + (parseInt($cover.data('delay')) / 1000) + 's;' +
 								'}' +
 							'</style>'
@@ -244,21 +255,14 @@ cover-scale options:
 					'position: absolute;' +
 					'margin: auto;' +
 					'-webkit-transition: all ' + (parseInt($dc.data('fix-interval')) / 1000) + 's ' + $dc.data('fix-easing') + ' ;' +
-					'-moz-transition: all ' + (parseInt($dc.data('fix-interval')) / 1000) + 's ' + $dc.data('fix-easing') + ';' +
-					'-ms-transition: all ' + (parseInt($dc.data('fix-interval')) / 1000) + 's ' + $dc.data('fix-easing') + ';' +
-					'-o-transition: all ' + (parseInt($dc.data('fix-interval')) / 1000) + 's ' + $dc.data('fix-easing') + ';' +
 					'transition: all ' + (parseInt($dc.data('fix-interval')) / 1000) + 's ' + $dc.data('fix-easing') + ';' +
 					'-webkit-transform: scale(' + $dc.data('fix-defaultscale') + ');' +
-					'-moz-transform: scale(' + $dc.data('fix-defaultscale') + ');' +
 					'-ms-transform: scale(' + $dc.data('fix-defaultscale') + ');' +
-					'-o-transform: scale(' + $dc.data('fix-defaultscale') + ');' +
 					'transform: scale(' + $dc.data('fix-defaultscale') + ');' +
 				'}' +
 				'#' + topID + ':hover .imgfix_src_img{' +
 					'-webkit-transform: scale(' + $dc.data('fix-hover') + ');' +
-					'-moz-transform: scale(' + $dc.data('fix-hover') + ');' +
 					'-ms-transform: scale(' + $dc.data('fix-hover') + ');' +
-					'-o-transform: scale(' + $dc.data('fix-hover') + ');' +
 					'transform: scale(' + $dc.data('fix-hover') + ');' +
 				'}' +
 			'</style>'
@@ -488,15 +492,11 @@ cover-scale options:
 					'opacity: ' + e.from.opacity + ';' +
 					'-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=' + (e.from.opacity * 100) + ')";' + 
 					'filter: alpha(opacity=' + (e.from.opacity * 100) + ');' + 
-					'-moz-opacity: ' + e.from.opacity + ';' + 
-					'-khtml-opacity: ' + e.from.opacity + ';' + 
   				'}' +
 				'#' + topID + ':hover .imgfix_cover_wrapper{' +
 					'opacity: ' + e.to.opacity + ';' +
 					'-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=' + (e.to.opacity * 100) + ')";' + 
 					'filter: alpha(opacity=' + (e.to.opacity * 100) + ');' + 
-					'-moz-opacity: ' + e.to.opacity + ';' + 
-					'-khtml-opacity: ' + e.to.opacity + ';' + 
 				'}' +
 			'</style>'
 		);
@@ -539,16 +539,12 @@ cover-scale options:
 			'<style id="imgfix_cover_scale_for_' + topID + '">' +
 				'#' + topID + ' .imgfix_cover_wrapper{' +
 					'-webkit-transform: scale(' + e.from.scale + ');' +
-					'-moz-transform: scale(' + e.from.scale + ');' +
 					'-ms-transform: scale(' + e.from.scale + ');' +
-					'-o-transform: scale(' + e.from.scale + ');' +
 					'transform: scale(' + e.from.scale + ');' +
   				'}' +
 				'#' + topID + ':hover .imgfix_cover_wrapper{' +
 					'-webkit-transform: scale(' + e.to.scale + ');' +
-					'-moz-transform: scale(' + e.to.scale + ');' +
 					'-ms-transform: scale(' + e.to.scale + ');' +
-					'-o-transform: scale(' + e.to.scale + ');' +
 					'transform: scale(' + e.to.scale + ');' +
 				'}' +
 			'</style>'

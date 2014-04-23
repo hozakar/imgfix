@@ -4,28 +4,52 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Untitled Document</title>
         <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-		<!--<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>-->
-        <script src="imgfix.js"></script>
-        <style>
-			.wtf, .wth {
-				box-sizing: content-box;
-				width: 180px;
-				height: 135px;
-				float: left;
-				margin: 12px;
-				padding: 12px;
-				background: grey;
-			}
-			.hoy { width: 180px; height: 135px; background: rgba(248,123,70,.6); position: relative; }
-			.hoy * { padding: 0px; margin: 0px; }
-			.hoy .crc { position: absolute; margin: auto; left: 0px; right: 0px; top: 0px; bottom: 0px; width: 48px; height: 48px; border: 2px solid #ddd; border-radius: 50%; }
-			.hoy .crc .hor { position: absolute; margin: auto; left: 0; right: 0; top: 0; bottom: 0; width: 75%; height: 2px; background: #ddd; }
-			.hoy .crc .ver { position: absolute; margin: auto; left: 0; right: 0; top: 0; bottom: 0; width: 2px; height: 75%; background: #ddd; }
-		</style>
+        <script src="js/imgfix.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
     </head>
     <body>
-    	<div style="width: 40%; margin: auto;">
-            <div id="dummy" class="wtf">
+        <div class="container">
+            <h1>imgfix</h1>
+
+            <h2>What is imgfix?</h2>
+            <p>Imgfix is a simple tool for dynamicaly sizing images and applying hover effects while displaying. Especially usefull with grids and galleries.</p>
+            
+            <h2>How does it work?</h2>
+            <p>Imgfix re-organizes containing elements and dynamically applies CSS properties to relevant layers and images.</p>
+
+            <h2>Important</h2>
+            <p>Imgfix sizes images relevant to containing element. So don't forget to specify the size of the element which imgfix is applied.</p>
+        </div>
+    	
+        <div class="bar"></div>
+
+        <div class="container">
+            <h2>Examples</h2>
+            <h3>Simple Usage</h3>
+            <p>Simply apply <strong>.imgfix()</strong> to an element.</p>
+            <pre>&lt;style&gt;
+    #element_1 { width: 50%; height: 240px; margin: auto; }    
+&lt;/style&gt;
+&lt;div id="element_1"&gt;
+    &lt;img src="http://forums.watchuseek.com/attachments/f71/1163952d1374488301-fun-game-watch-pictionary-view-level-7.jpg" /&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    $('#element_1').imgfix();
+&lt;/script&gt;</pre>
+        </div>
+
+        <style>
+            #element_1 { width: 50%; height: 240px; margin: auto; }    
+        </style>
+        <div id="element_1">
+            <img src="http://forums.watchuseek.com/attachments/f71/1163952d1374488301-fun-game-watch-pictionary-view-level-7.jpg" />
+        </div>
+        <script>
+            $('#element_1').imgfix();
+        </script>
+
+        <div class="container">
+            <div class="wtf">
                 <img src="http://forums.watchuseek.com/attachments/f71/1163952d1374488301-fun-game-watch-pictionary-view-level-7.jpg" />
                 <a href="#"><div class="hoy"><div class="crc"><div class="hor"></div><div class="ver"></div></div></div></a>
                 <div class="extcover"></div>
@@ -47,21 +71,20 @@
             <div class="wtf" data-fix-img="http://www.bestourism.com/img/items/big/1180/Antarctica_Antarctica-view_4356.jpg"><a href="#"><div class="hoy"><div class="crc"><div class="hor"></div><div class="ver"></div></div></div></a></div>
             <div class="wtf" data-fix-img="http://whiteknighthotelintramuros.com/blog/wp-content/uploads/2012/04/Sunset-View.jpg"><a href="#"><div class="hoy"><div class="crc"><div class="hor"></div><div class="ver"></div></div></div></a></div>
             <div class="wtf" data-fix-img="http://upload.wikimedia.org/wikipedia/commons/6/6e/IMG_3758_view_north_from_French_King_Bridge.jpg"><a href="#"><div class="hoy"><div class="crc"><div class="hor"></div><div class="ver"></div></div></div></a></div>
-
-            <div class="wtf" data-fix-img="http://upload.wikimedia.org/wikipedia/commons/6/6e/IMG_3758_view_north_from_French_King_Bridge.jpg"><a href="#"><div class="hoy"><div class="crc"><div class="hor"></div><div class="ver"></div></div></div></a></div>
         </div>
         
         <script>
-			$('.wtf').imgfix({
-				hover: 1.2,
-				coverclass: 'hoy',
-				cover: {
-					fade: 'none',
-					slide: 'dynamic',
-					scale: 'none'
-				}
-			});
+            $('.wtf').imgfix({
+                hover: 1.2,
+                coverclass: 'hoy',
+                cover: {
+                    fade: 'none',
+                    slide: 'dynamic',
+                    scale: 'none'
+                }
+            });
 		</script>
+
         <div style="clear: both;">&nbsp;</div>
         
         <button onclick="

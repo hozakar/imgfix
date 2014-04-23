@@ -1,0 +1,122 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Verdana, Arial;
+  font-size: 16px;
+  line-height: 1.5em;
+  color: #333;
+  background: #f3f3f3;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 16px;
+  color: #666;
+}
+
+h6 {
+  font-size: 16px;
+  font-style: italic;
+  color: #666;
+}
+
+.container {
+  width: 960px;
+  margin: auto;
+}
+
+.bar {
+  width: 960px;
+  margin: 30px auto;
+  background: white;
+  height: 2px;
+  -webkit-box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+}
+
+pre {
+  border-radius: 6px;
+  border: 1px solid #999;
+  padding: 12px;
+  background: white;
+  font-size: 13px;
+  line-height: 17px;
+}
+
+.wtf {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 234px;
+  height: 180px;
+  float: left;
+  margin: 3px;
+  padding: 6px;
+  background: white;
+  -webkit-box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+}
+
+.hoy {
+  width: 222px;
+  height: 168px;
+  background: rgba(248, 123, 70, 0.6);
+  position: relative;
+}
+
+.hoy * {
+  padding: 0px;
+  margin: 0px;
+}
+
+.hoy .crc {
+  position: absolute;
+  margin: auto;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  width: 48px;
+  height: 48px;
+  border: 2px solid #ddd;
+  border-radius: 50%;
+}
+
+.hoy .crc .hor {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 75%;
+  height: 2px;
+  background: #ddd;
+}
+
+.hoy .crc .ver {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  height: 75%;
+  background: #ddd;
+}
