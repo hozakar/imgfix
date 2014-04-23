@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Untitled Document</title>
+        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<!--<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>-->
+        <script src="imgfix.js"></script>
+        <style>
+			.wtf, .wth {
+				box-sizing: content-box;
+				width: 180px;
+				height: 135px;
+				float: left;
+				margin: 12px;
+				padding: 12px;
+				background: grey;
+			}
+			.hoy { width: 180px; height: 135px; background: rgba(248,123,70,.6); position: relative; }
+			.hoy * { padding: 0px; margin: 0px; }
+			.hoy .crc { position: absolute; margin: auto; left: 0px; right: 0px; top: 0px; bottom: 0px; width: 48px; height: 48px; border: 2px solid #ddd; border-radius: 50%; }
+			.hoy .crc .hor { position: absolute; margin: auto; left: 0; right: 0; top: 0; bottom: 0; width: 75%; height: 2px; background: #ddd; }
+			.hoy .crc .ver { position: absolute; margin: auto; left: 0; right: 0; top: 0; bottom: 0; width: 2px; height: 75%; background: #ddd; }
+		</style>
+    </head>
+    <body>
+    	<div style="width: 40%; margin: auto;">
+            <div id="dummy" class="wtf">
+                <img src="http://forums.watchuseek.com/attachments/f71/1163952d1374488301-fun-game-watch-pictionary-view-level-7.jpg" />
+                <a href="#"><div class="hoy"><div class="crc"><div class="hor"></div><div class="ver"></div></div></div></a>
+                <div class="extcover"></div>
+            </div>
+    
+            <div class="wtf">
+                <img src="http://www.visitbritainshop.com/SiteData/root/Image/The%20View%20from%20The%20Shard/View-from-Shard-Dusk.jpg" />
+                <a href="#"><div class="hoy"><div class="crc"><div class="hor"></div><div class="ver"></div></div></div></a>
+            </div>
+            <div class="wtf">
+                <img src="http://4.bp.blogspot.com/_qugUDYn9D2c/TPbfv2cP7XI/AAAAAAAAACU/mLkQvYIXDCA/s1600/angel-jeff-hardy-9377006-1024-768.jpg" />
+                <a href="#"><div class="hoy"><div class="crc"><div class="hor"></div><div class="ver"></div></div></div></a>
+            </div>
+            <div class="wtf" data-fix-img="http://i.telegraph.co.uk/multimedia/archive/02448/Pinnacle_The_View__2448728k.jpg">
+                <a href="#"><div class="hoy"><div class="crc"><div class="hor"></div><div class="ver"></div></div></div></a>
+            </div>
+    
+            <div class="wtf" data-fix-img="http://media-cdn.tripadvisor.com/media/photo-s/03/0a/64/8e/ao-noi-sea-view.jpg"><a href="#"><div class="hoy"><div class="crc"><div class="hor"></div><div class="ver"></div></div></div></a></div>
+            <div class="wtf" data-fix-img="http://www.bestourism.com/img/items/big/1180/Antarctica_Antarctica-view_4356.jpg"><a href="#"><div class="hoy"><div class="crc"><div class="hor"></div><div class="ver"></div></div></div></a></div>
+            <div class="wtf" data-fix-img="http://whiteknighthotelintramuros.com/blog/wp-content/uploads/2012/04/Sunset-View.jpg"><a href="#"><div class="hoy"><div class="crc"><div class="hor"></div><div class="ver"></div></div></div></a></div>
+            <div class="wtf" data-fix-img="http://upload.wikimedia.org/wikipedia/commons/6/6e/IMG_3758_view_north_from_French_King_Bridge.jpg"><a href="#"><div class="hoy"><div class="crc"><div class="hor"></div><div class="ver"></div></div></div></a></div>
+
+            <div class="wtf" data-fix-img="http://upload.wikimedia.org/wikipedia/commons/6/6e/IMG_3758_view_north_from_French_King_Bridge.jpg"><a href="#"><div class="hoy"><div class="crc"><div class="hor"></div><div class="ver"></div></div></div></a></div>
+        </div>
+        
+        <script>
+			$('.wtf').imgfix({
+				hover: 1.2,
+				coverclass: 'hoy',
+				cover: {
+					fade: 'none',
+					slide: 'dynamic',
+					scale: 'none',
+					easing: 'cubic-bezier(0.4, 1.2, 0.4, 1.4)'
+				}
+			});
+		</script>
+        <div style="clear: both;">&nbsp;</div>
+        
+        <button onclick="
+        	$('.wtf').data({
+                fixHover: 1.8,
+                fixInterval: 800,
+                fixCoverFade: 'in',
+                fixCoverSlide: 'none',
+                fixCoverScale: 'none',
+                fixCoverInterval: 1200
+            });
+            $(document).imgfixRefresh();
+        ">change</button>
+        
+        <button onclick="
+        	$('.wtf').data({
+            	fixDefaultscale: 1.25,
+                fixHover: .8,
+                fixCoverSlide: 'none',
+                fixCoverScale: 'in'
+            });
+            $(document).imgfixRefresh();
+        ">change</button>
+    </body>
+</html>
