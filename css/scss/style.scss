@@ -1,0 +1,122 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Verdana, Arial;
+    font-size: 16px;
+    line-height: 1.5em;
+    color: #333;
+    background: #f3f3f3;
+}
+
+h1 { font-size: 32px; }
+h2 { font-size: 24px; }
+h3 { font-size: 20px; }
+h4 { font-size: 16px; }
+h5 { font-size: 16px; color: #666; }
+h6 { font-size: 16px; font-style: italic; color: #666; }
+
+.container {
+    box-sizing: border-box;
+    width: 960px;
+    margin: 24px auto;
+    padding: 6px 0px;
+    position: relative;
+    overflow: hidden;
+}
+
+.bar {
+    width: 960px;
+    margin: auto;
+    background: white;
+    height: 2px;
+    box-shadow: 0px 0px 2px rgba(0,0,0,.6);
+    clear: both;
+}
+
+pre {
+    border-radius: 6px;
+    border: 1px solid #999;
+    padding: 12px;
+    background: white;
+    font-size: 13px;
+    line-height: 17px;
+}
+
+.bordered {
+	border: 6px solid white;
+    box-shadow: 0px 0px 2px rgba(0,0,0,.6);
+    padding: 0px !important;
+}
+
+#element_1, #element_2 { box-sizing: border-box; height: 240px; }
+
+ul.scale-on-hover, ul.cover-fade-in, ul.cover-slide-in, ul.cover-scale-out, ul.cover-slide-dynamic {
+    list-style: none;
+    box-sizing: border-box;
+    padding: 3px;
+    margin: 0px;
+
+    li {
+        box-sizing: border-box;
+        width: 32.5%;
+        height: 180px;
+        margin-left: 1.25%;
+        margin-bottom: 12px;
+        float: left;
+
+        &:nth-child(3n+1) { margin-left: 0; }
+        
+        .cover {
+            background: rgba(248,123,70,.6);
+            position: relative;
+            width: 100%;
+            height: 100%;
+
+            .crc {
+                position: absolute;
+                margin: auto;
+                left: 0px;
+                right: 0px;
+                top: 0px;
+                bottom: 0px;
+                width: 48px;
+                height: 48px;
+                border: 2px solid #ddd;
+                border-radius: 50%;
+
+                .hor {
+                    position: absolute;
+                    margin: auto;
+                    left: 0;
+                    right: 0;
+                    top: 0;
+                    bottom: 0;
+                    width: 75%;
+                    height: 2px;
+                    background: #ddd;
+                }
+                .ver {
+                    position: absolute;
+                    margin: auto;
+                    left: 0;
+                    right: 0;
+                    top: 0;
+                    bottom: 0;
+                    width: 2px;
+                    height: 75%;
+                    background: #ddd;
+                }
+
+            }
+        }
+    }
+}
+
+.wtf {
+	box-sizing: border-box;
+	width: 234px;
+	height: 180px;
+	float: left;
+	margin: 3px;
+}
+

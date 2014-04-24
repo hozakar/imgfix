@@ -6,6 +6,9 @@ $(element).imgfix({
 	fixin: 0,
 	scale: 1,
 	defaultscale: 1,
+	width: null,
+	height: null,
+	protectaspectratio: 0,
 	interval: 400,
 	easing: '',
 	coverclass: '',
@@ -43,15 +46,18 @@ cover-scale options:
 	in
 	out
 
-Default value for 
-fixin             => 0
-scale             => 1
-defaultscale	  => 1
-interval          => 400
-easing            => ease
-cover-easing      => ease
-cover-delay       => 0
-cover-interval    => 400
+Default value for
+    fixin               => 0
+    scale               => 1
+    defaultscale	    => 1
+    width               => null
+    height              => null
+    protectaspectratio  => 0
+    interval            => 400
+    easing              => ease
+    cover-easing        => ease
+    cover-delay         => 0
+    cover-interval      => 400
 
 ******************************* */
 
@@ -173,12 +179,11 @@ cover-interval    => 400
 				if(virgin) $cel.wrapInner('<div id="imgfix_wrapper_layer_' + family.id + '_' + i + '" class="imgfix_wrapper_layer" style="position: relative; padding: 0; margin: 0; width: 100%; height: 100%; overflow: hidden;"></div>');
 				
 				/* İmaj yüklendiğinde hesaplamaları yapmak ve stilleri yaratmak için ilgili fonksiyona yönlendir */
+				setImage($('#imgfix_wrapper_layer_' + family.id + '_' + i + ' .imgfix_src_img')[0]);
 				if(virgin) {
 					$('#imgfix_wrapper_layer_' + family.id + '_' + i + ' .imgfix_src_img').load(function(){
 						setImage(this);
 					});
-				} else {
-					setImage($('#imgfix_wrapper_layer_' + family.id + '_' + i + ' .imgfix_src_img')[0]);
 				}
 				
 				/* Cover kullanılacaksa ilgili nesneleri yarat ve stillerini ayarla */

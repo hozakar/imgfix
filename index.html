@@ -24,9 +24,7 @@
 			img12 By Wojtek Witkowski
 		-->
         <div class="container">
-            <h1>imgfix</h1>
-
-            <h2>What is imgfix?</h2>
+            <h1>What is imgfix?</h1>
             <p>Imgfix is a simple tool for dynamicaly sizing images and applying hover effects while displaying. Especially usefull with grids and galleries.</p>
             
             <h2>How does it work?</h2>
@@ -42,84 +40,363 @@
             <h2>Examples</h2>
             <h3>Simple Usage</h3>
             <p>Simply apply <strong>.imgfix()</strong> to an element.</p>
-            <pre>&lt;style&gt;
-    #element_1 { width: 50%; height: 240px; margin: auto; }    
-&lt;/style&gt;
-&lt;div id="element_1"&gt;
-    &lt;img src="img/img01.jpg" /&gt;
+            <p>You can either place an image inside the element,</p>
+            <pre>
+&lt;div id=&quot;element_1&quot;&gt;
+    &lt;img src=&quot;img/img01.jpg&quot; alt=&quot;img01&quot; /&gt;
 &lt;/div&gt;
 &lt;script&gt;
-    $('#element_1').imgfix();
+    $(&#39;#element_1&#39;).imgfix();
 &lt;/script&gt;</pre>
+
         </div>
 
-        <style>
-            #element_1 { width: 50%; height: 240px; margin: auto; }    
-        </style>
-        <div id="element_1">
-            <img src="img/img01.jpg" />
+        <div id="element_1" class="container bordered">
+            <img src="img/img01.jpg" alt="img01" />
         </div>
+        <div class="container">
+            <p>or you can place the image address to "data-fix-img" attribute.</p>
+            <pre>
+&lt;div id=&quot;element_2&quot; data-fix-img=&quot;img/img01.jpg&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+    $(&#39;#element_2&#39;).imgfix();
+&lt;/script&gt;</pre>
+
+        </div>
+
+        <div id="element_2" class="container bordered" data-fix-img="img/img02.jpg"></div>
         <script>
-            $('#element_1').imgfix();
+            $('#element_1, #element_2').imgfix();
         </script>
 
-        <div class="container">
-            <div class="wtf">
-                <img src="http://forums.watchuseek.com/attachments/f71/1163952d1374488301-fun-game-watch-pictionary-view-level-7.jpg" />
-                <a href="#"><div class="hoy"><div class="crc"><div class="hor"></div><div class="ver"></div></div></div></a>
-                <div class="extcover"></div>
-            </div>
-    
-            <div class="wtf">
-                <img src="http://www.visitbritainshop.com/SiteData/root/Image/The%20View%20from%20The%20Shard/View-from-Shard-Dusk.jpg" />
-                <a href="#"><div class="hoy"><div class="crc"><div class="hor"></div><div class="ver"></div></div></div></a>
-            </div>
-            <div class="wtf">
-                <img src="http://4.bp.blogspot.com/_qugUDYn9D2c/TPbfv2cP7XI/AAAAAAAAACU/mLkQvYIXDCA/s1600/angel-jeff-hardy-9377006-1024-768.jpg" />
-                <a href="#"><div class="hoy"><div class="crc"><div class="hor"></div><div class="ver"></div></div></div></a>
-            </div>
-            <div class="wtf" data-fix-img="http://i.telegraph.co.uk/multimedia/archive/02448/Pinnacle_The_View__2448728k.jpg">
-                <a href="#"><div class="hoy"><div class="crc"><div class="hor"></div><div class="ver"></div></div></div></a>
-            </div>
-    
-            <div class="wtf" data-fix-img="http://media-cdn.tripadvisor.com/media/photo-s/03/0a/64/8e/ao-noi-sea-view.jpg"><a href="#"><div class="hoy"><div class="crc"><div class="hor"></div><div class="ver"></div></div></div></a></div>
-            <div class="wtf" data-fix-img="http://www.bestourism.com/img/items/big/1180/Antarctica_Antarctica-view_4356.jpg"><a href="#"><div class="hoy"><div class="crc"><div class="hor"></div><div class="ver"></div></div></div></a></div>
-            <div class="wtf" data-fix-img="http://whiteknighthotelintramuros.com/blog/wp-content/uploads/2012/04/Sunset-View.jpg"><a href="#"><div class="hoy"><div class="crc"><div class="hor"></div><div class="ver"></div></div></div></a></div>
-            <div class="wtf" data-fix-img="http://upload.wikimedia.org/wikipedia/commons/6/6e/IMG_3758_view_north_from_French_King_Bridge.jpg"><a href="#"><div class="hoy"><div class="crc"><div class="hor"></div><div class="ver"></div></div></div></a></div>
-        </div>
-        
-        <script>
-            $('.wtf').imgfix({
-                scale: 1.2,
-                coverClass: 'hoy',
-                cover: {
-                    slide: 'dynamic',
-                }
-            });
-		</script>
+        <div class="bar"></div>
 
-        <div style="clear: both;">&nbsp;</div>
+        <div class="container">
+            <h3>Scale image on hover</h3>
+            <p>
+                Scale effect may be applied on hover.
+            </p>
+            <pre>
+&lt;ul class=&quot;scale-on-hover&quot;&gt;
+    &lt;li data-fix-img=&quot;img/img03.jpg&quot;&gt;&lt;/li&gt;
+    &lt;li data-fix-img=&quot;img/img04.jpg&quot;&gt;&lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;img/img05.jpg&quot; alt=&quot;img05&quot; /&gt;&lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+&lt;script&gt;
+    $(&#39;ul.scale-on-hover li&#39;).imgfix({
+        scale: 1.4
+    });
+&lt;/script&gt;</pre>
+
+        </div>
+
+        <div class="container">
+            <ul class="scale-on-hover">
+                <li class="bordered" data-fix-img="img/img03.jpg"></li>
+                <li class="bordered" data-fix-img="img/img04.jpg"></li>
+                <li class="bordered">
+                    <a href="#"><img src="img/img05.jpg" alt="img05" /></a>
+                </li>
+            </ul>
+            <script>
+                $('ul.scale-on-hover li').imgfix({
+                    scale: 1.4
+                });
+            </script>
+        </div>
+
+        <div class="bar"></div>
+
+        <div class="container">
+            <h3>Cover layers</h3>
+            <p>
+                Cover layers may be used width imgfix. Here are some examples.
+            </p>
+            <h4>Cover fades in</h4>
+<pre>
+&lt;ul class=&quot;cover-fade-in&quot;&gt;
+    &lt;li data-fix-img=&quot;img/img07.jpg&quot;&gt;
+        &lt;div class=&quot;cover&quot;&gt;&lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li data-fix-img=&quot;img/img08.jpg&quot;&gt;
+        &lt;div class=&quot;cover&quot;&gt;&lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li data-fix-img=&quot;img/img09.jpg&quot;&gt;
+        &lt;div class=&quot;cover&quot;&gt;&lt;/div&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+&lt;script&gt;
+    $(&#39;ul.cover-fade-in li&#39;).imgfix({
+        scale: 1.25,
+        coverclass: &#39;cover&#39;,
+        cover: {
+            fade: &#39;in&#39;
+        }
+    });
+&lt;/script&gt;</pre>
+
+        </div>
+
+        <div class="container">
+            <ul class="cover-fade-in">
+                <li class="bordered" data-fix-img="img/img07.jpg">
+                    <div class="cover">
+                        <div class="crc">
+                            <div class="hor"></div>
+                            <div class="ver"></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="bordered" data-fix-img="img/img08.jpg">
+                    <div class="cover">
+                        <div class="crc">
+                            <div class="hor"></div>
+                            <div class="ver"></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="bordered" data-fix-img="img/img09.jpg">
+                    <div class="cover">
+                        <div class="crc">
+                            <div class="hor"></div>
+                            <div class="ver"></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <script>
+                $('ul.cover-fade-in li').imgfix({
+                    scale: 1.25,
+                    coverclass: 'cover',
+                    cover: {
+                        fade: 'in'
+                    }
+                });
+            </script>
+        </div>
+
+        <div class="container">
+            <h4>Cover slides in from left side</h4>
+<pre>
+&lt;ul class=&quot;cover-slide-in&quot;&gt;
+    &lt;li data-fix-img=&quot;img/img10.jpg&quot;&gt;
+        &lt;div class=&quot;cover&quot;&gt;&lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li data-fix-img=&quot;img/img11.jpg&quot;&gt;
+        &lt;div class=&quot;cover&quot;&gt;&lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li data-fix-img=&quot;img/img12.jpg&quot;&gt;
+        &lt;div class=&quot;cover&quot;&gt;&lt;/div&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+&lt;script&gt;
+    $(&#39;ul.cover-slide-in li&#39;).imgfix({
+        scale: 1.25,
+        coverclass: &#39;cover&#39;,
+        cover: {
+            slide: &#39;in-left&#39;
+        }
+    });
+&lt;/script&gt;</pre>
+
+        </div>
+
+        <div class="container">
+            <ul class="cover-slide-in">
+                <li class="bordered" data-fix-img="img/img10.jpg">
+                    <div class="cover">
+                        <div class="crc">
+                            <div class="hor"></div>
+                            <div class="ver"></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="bordered" data-fix-img="img/img11.jpg">
+                    <div class="cover">
+                        <div class="crc">
+                            <div class="hor"></div>
+                            <div class="ver"></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="bordered" data-fix-img="img/img12.jpg">
+                    <div class="cover">
+                        <div class="crc">
+                            <div class="hor"></div>
+                            <div class="ver"></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <script>
+                $('ul.cover-slide-in li').imgfix({
+                    scale: 1.25,
+                    coverclass: 'cover',
+                    cover: {
+                        slide: 'in-left'
+                    }
+                });
+            </script>
+        </div>
+
+        <div class="container">
+            <h4>Cover loads visible and scales out on hover</h4>
+<pre>
+&lt;ul class=&quot;cover-scale-out&quot;&gt;
+    &lt;li data-fix-img=&quot;img/img04.jpg&quot;&gt;
+        &lt;div class=&quot;cover&quot;&gt;&lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li data-fix-img=&quot;img/img05.jpg&quot;&gt;
+        &lt;div class=&quot;cover&quot;&gt;&lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li data-fix-img=&quot;img/img06.jpg&quot;&gt;
+        &lt;div class=&quot;cover&quot;&gt;&lt;/div&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+&lt;script&gt;
+    $(&#39;ul.cover-scale-out li&#39;).imgfix({
+        scale: 1.25,
+        coverclass: &#39;cover&#39;,
+        cover: {
+            scale: &#39;out&#39;
+        }
+    });
+&lt;/script&gt;</pre>
+
+        </div>
+
+        <div class="container">
+            <ul class="cover-scale-out">
+                <li class="bordered" data-fix-img="img/img04.jpg">
+                    <div class="cover">
+                        <div class="crc">
+                            <div class="hor"></div>
+                            <div class="ver"></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="bordered" data-fix-img="img/img05.jpg">
+                    <div class="cover">
+                        <div class="crc">
+                            <div class="hor"></div>
+                            <div class="ver"></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="bordered" data-fix-img="img/img06.jpg">
+                    <div class="cover">
+                        <div class="crc">
+                            <div class="hor"></div>
+                            <div class="ver"></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <script>
+                $('ul.cover-scale-out li').imgfix({
+                    scale: 1.25,
+                    coverclass: 'cover',
+                    cover: {
+                        scale: 'out'
+                    }
+                });
+            </script>
+        </div>
+
+        <div class="container">
+            <h4>Cover slides in dynamically</h4>
+<pre>
+&lt;ul class=&quot;cover-slide-dynamic&quot;&gt;
+    &lt;li data-fix-img=&quot;img/img02.jpg&quot;&gt;
+        &lt;div class=&quot;cover&quot;&gt;&lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li data-fix-img=&quot;img/img03.jpg&quot;&gt;
+        &lt;div class=&quot;cover&quot;&gt;&lt;/div&gt;
+    &lt;/li&gt;
+&nbsp;   .
+&nbsp;   .
+&nbsp;   .
+&lt;/ul&gt;
+&lt;script&gt;
+    $(&#39;ul.cover-slide-dynamic li&#39;).imgfix({
+        scale: 1.25,
+        coverclass: &#39;cover&#39;,
+        cover: {
+            slide: &#39;dynamic&#39;
+        }
+    });
+&lt;/script&gt;</pre>
+
+        </div>
+
+        <div class="container">
+            <ul class="cover-slide-dynamic">
+                <li class="bordered" data-fix-img="img/img02.jpg">
+                    <div class="cover">
+                        <div class="crc">
+                            <div class="hor"></div>
+                            <div class="ver"></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="bordered" data-fix-img="img/img03.jpg">
+                    <div class="cover">
+                        <div class="crc">
+                            <div class="hor"></div>
+                            <div class="ver"></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="bordered" data-fix-img="img/img04.jpg">
+                    <div class="cover">
+                        <div class="crc">
+                            <div class="hor"></div>
+                            <div class="ver"></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="bordered" data-fix-img="img/img05.jpg">
+                    <div class="cover">
+                        <div class="crc">
+                            <div class="hor"></div>
+                            <div class="ver"></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="bordered" data-fix-img="img/img06.jpg">
+                    <div class="cover">
+                        <div class="crc">
+                            <div class="hor"></div>
+                            <div class="ver"></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="bordered" data-fix-img="img/img07.jpg">
+                    <div class="cover">
+                        <div class="crc">
+                            <div class="hor"></div>
+                            <div class="ver"></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <script>
+                $('ul.cover-slide-dynamic li').imgfix({
+                    scale: 1.25,
+                    coverclass: 'cover',
+                    cover: {
+                        slide: 'dynamic'
+                    }
+                });
+            </script>
+        </div>
+
+        <div class="bar"></div>
         
-        <button onclick="
-        	$('.wtf').data({
-                fixHover: 1.8,
-                fixInterval: 800,
-                fixCoverFade: 'in',
-                fixCoverSlide: 'none',
-                fixCoverScale: 'none',
-                fixCoverInterval: 1200
-            });
-            $(document).imgfixRefresh();
-        ">change</button>
-        
-        <button onclick="
-        	$('.wtf').data({
-            	fixDefaultscale: 1.25,
-                fixHover: .8,
-                fixCoverSlide: 'none',
-                fixCoverScale: 'in'
-            });
-            $(document).imgfixRefresh();
-        ">change</button>
+        <div class="container">
+            For more examples and detailed information please visit <a href="http://imgfix.beltslib.net">imgfix.beltslib.net</a>
+        </div>
     </body>
 </html>
