@@ -8,6 +8,21 @@
         <link rel="stylesheet" type="text/css" href="css/style.css" />
     </head>
     <body>
+		<!--
+			Photos downloaded from unsplash.com
+			img01 By Björn Simon
+			img02 By Anders Jildén
+			img03 By Afroz Nawaf
+			img04 By Paul E. Harrer
+			img05 By Lumen Bigott
+			img06 By Sonja Langford
+			img07 By Greg Shield
+			img08 By Ryan Schroeder
+			img09 By Tiago Gerken
+			img10 By Taylor Leopold
+			img11 By Taylor Leopold
+			img12 By Wojtek Witkowski
+		-->
         <div class="container">
             <h1>imgfix</h1>
 
@@ -31,7 +46,7 @@
     #element_1 { width: 50%; height: 240px; margin: auto; }    
 &lt;/style&gt;
 &lt;div id="element_1"&gt;
-    &lt;img src="http://forums.watchuseek.com/attachments/f71/1163952d1374488301-fun-game-watch-pictionary-view-level-7.jpg" /&gt;
+    &lt;img src="img/img01.jpg" /&gt;
 &lt;/div&gt;
 &lt;script&gt;
     $('#element_1').imgfix();
@@ -42,7 +57,7 @@
             #element_1 { width: 50%; height: 240px; margin: auto; }    
         </style>
         <div id="element_1">
-            <img src="http://forums.watchuseek.com/attachments/f71/1163952d1374488301-fun-game-watch-pictionary-view-level-7.jpg" />
+            <img src="img/img01.jpg" />
         </div>
         <script>
             $('#element_1').imgfix();
@@ -75,12 +90,10 @@
         
         <script>
             $('.wtf').imgfix({
-                hover: 1.2,
-                coverclass: 'hoy',
+                scale: 1.2,
+                coverClass: 'hoy',
                 cover: {
-                    fade: 'none',
                     slide: 'dynamic',
-                    scale: 'none'
                 }
             });
 		</script>

@@ -4,7 +4,8 @@
 
 $(element).imgfix({
 	fixin: 0,
-	hover: 1,
+	scale: 1,
+	defaultscale: 1,
 	interval: 400,
 	easing: '',
 	coverclass: '',
@@ -33,8 +34,8 @@ cover-slide options:
     dynamic
 
 cover-fade options:
-	none
-	in (default)
+	none (default)
+	in
 	out
 
 cover-scale options:
@@ -44,7 +45,8 @@ cover-scale options:
 
 Default value for 
 fixin             => 0
-hover             => 1
+scale             => 1
+defaultscale	  => 1
 interval          => 400
 easing            => ease
 cover-easing      => ease
@@ -64,13 +66,15 @@ cover-interval    => 400
 			if(!param.cover) param.cover = {};
 			param = {
 				fixin: param.fixin ? 1 : 0,
-				hover: param.hover ? param.hover : 1,
-				interval: param.interval ? param.interval : 400,
+				scale: param.scale ? param.scale : 1,
 				easing: param.easing ? param.easing : '',
-				defaultscale: param.defaultscale ? param.defaultscale : 1,
-				coverclass: param.coverclass ? param.coverclass : '',
+				defaultscale: param.defaultscale || param.defaultScale ? param.defaultscale || param.defaultScale : 1,
+				width: param.width ? param.width : null,
+				height: param.height ? param.height : null,
+				protectaspectratio: param.protectaspectratio || param.protectAspectRatio ? param.protectaspectratio || param.protectAspectRatio : null,
+				coverclass: param.coverclass || param.coverClass ? param.coverclass || param.coverClass : '',
 				cover: {
-					fade: param.cover.fade ? param.cover.fade : 'in',
+					fade: param.cover.fade ? param.cover.fade : 'none',
 					slide: param.cover.slide ? param.cover.slide : 'none',
 					scale: param.cover.scale ? param.cover.scale : 'none',
 					easing: param.cover.easing ? param.cover.easing : '',
@@ -78,6 +82,8 @@ cover-interval    => 400
 					interval: param.cover.interval ? param.cover.interval : 400
 				}
 			}
+			param.interval = param.interval ? param.interval : (param.scale == 1 ? 0 : 400);
+			
 			family.parameters = param;
 			el.css('overflow', 'hidden');
 			for(var i = 0; i < el.length; i++) {
@@ -91,8 +97,11 @@ cover-interval    => 400
 					if($cel.data('fix-img') == null) $cel.data('fix-img', '');
 					$cel.data('fix-fixin', param.fixin ? param.fixin : $cel.data('fix-fixin'));
 					$cel.data('fix-defaultscale', param.defaultscale ? param.defaultscale : $cel.data('fix-defaultscale'));
-					$cel.data('fix-hover', (param.hover ? param.hover : $cel.data('fix-hover')) * $cel.data('fix-defaultscale'));
+					$cel.data('fix-scale', (param.scale ? param.scale : $cel.data('fix-scale')) * $cel.data('fix-defaultscale'));
 					$cel.data('fix-interval', param.interval ? param.interval : $cel.data('fix-interval'));
+					$cel.data('fix-width', param.width ? param.width : $cel.data('fix-width'));
+					$cel.data('fix-height', param.height ? param.height : $cel.data('fix-height'));
+					$cel.data('fix-protect-aspect-ratio', param.protectaspectratio ? param.protectaspectratio : $cel.data('fix-protect-aspect-ratio'));
 					$cel.data('fix-easing', param.easing ? param.easing : $cel.data('fix-easing'));
 					$cel.data('fix-cover', param.coverclass ? param.coverclass : $cel.data('fix-cover'));
 					$cel.data('fix-cover-fade', param.cover.fade ? param.cover.fade : $cel.data('fix-cover-fade'));
@@ -105,8 +114,11 @@ cover-interval    => 400
 					if($cel.data('fix-img') == null) $cel.data('fix-img', '');
 					$cel.data('fix-fixin', $cel.data('fix-fixin') == null ? param.fixin : $cel.data('fix-fixin'));
 					$cel.data('fix-defaultscale', $cel.data('fix-defaultscale') == null ? param.defaultscale : $cel.data('fix-defaultscale'));
-					$cel.data('fix-hover', ($cel.data('fix-hover') == null ? param.hover : $cel.data('fix-hover')) * $cel.data('fix-defaultscale'));
+					$cel.data('fix-scale', ($cel.data('fix-scale') == null ? param.scale : $cel.data('fix-scale')) * $cel.data('fix-defaultscale'));
 					$cel.data('fix-interval', $cel.data('fix-interval') == null ? param.interval : $cel.data('fix-interval'));
+					$cel.data('fix-width', $cel.data('fix-width') == null ? param.width : $cel.data('fix-width'));
+					$cel.data('fix-height', $cel.data('fix-height') == null ? param.height : $cel.data('fix-height'));
+					$cel.data('fix-protect-aspect-ratio', $cel.data('fix-protect-aspect-ratio') == null ? param.protectaspectratio : $cel.data('fix-protect-aspect-ratio'));
 					$cel.data('fix-easing', $cel.data('fix-easing') == null ? param.easing : $cel.data('fix-easing'));
 					$cel.data('fix-cover', $cel.data('fix-cover') == null ? param.coverclass : $cel.data('fix-cover'));
 					$cel.data('fix-cover-fade', $cel.data('fix-cover-fade') == null ? param.cover.fade : $cel.data('fix-cover-fade'));
@@ -115,10 +127,34 @@ cover-interval    => 400
 					$cel.data('fix-cover-easing', $cel.data('fix-cover-easing') == null ? param.cover.easing : $cel.data('fix-cover-easing'));
 					$cel.data('fix-cover-delay', $cel.data('fix-cover-delay') == null ? param.cover.delay : $cel.data('fix-cover-delay'));
 					$cel.data('fix-cover-interval', $cel.data('fix-cover-interval') == null ? param.cover.interval : $cel.data('fix-cover-interval'));
+					
+					/* Top Container için boyut ayarları */
+					if($cel.data('fix-width')) $cel.width($cel.data('fix-width'));
+					if($cel.data('fix-height')) {
+						var h = $cel.data('fix-height');
+						if(h.split('%').length > 1) {
+							h = parseFloat(h.split('%')[0]);
+							h = h ? $cel.width() * h / 100 : 0;
+						}
+						$cel.height(h);
+					}
+					
+					if($cel.data('fix-protect-aspect-ratio')) {
+						if($cel.data('fix-aspect-ratio')) {
+							$cel.height($cel.width() * $cel.data('fix-aspect-ratio'));
+						} else {
+							var h = $cel.height();
+							var w = $cel.width();
+							var rat = w ? h / w : 0;
+							$cel.data('fix-aspect-ratio', rat);
+						}
+					}
+					
 				}
 				
-				/* Varsa imaj için gerekli ayarlamaları yap yoksa yarat */
 				if($cel.css('position')=='static') $cel.css('position', 'relative');
+
+				/* Varsa imaj için gerekli ayarlamaları yap yoksa yarat */
 				if(virgin) {
 					if($cel.find('img').length == 0) {
 						$cel.append('<img class="imgfix_src_img" src="' + $cel.data('fix-img') + '" />');
@@ -261,9 +297,9 @@ cover-interval    => 400
 					'transform: scale(' + $dc.data('fix-defaultscale') + ');' +
 				'}' +
 				'#' + topID + ':hover .imgfix_src_img{' +
-					'-webkit-transform: scale(' + $dc.data('fix-hover') + ');' +
-					'-ms-transform: scale(' + $dc.data('fix-hover') + ');' +
-					'transform: scale(' + $dc.data('fix-hover') + ');' +
+					'-webkit-transform: scale(' + $dc.data('fix-scale') + ');' +
+					'-ms-transform: scale(' + $dc.data('fix-scale') + ');' +
+					'transform: scale(' + $dc.data('fix-scale') + ');' +
 				'}' +
 			'</style>'
 		);
