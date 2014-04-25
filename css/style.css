@@ -36,6 +36,8 @@ h6 {
 }
 
 .container {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   width: 960px;
   margin: 24px auto;
@@ -49,6 +51,7 @@ h6 {
   margin: auto;
   background: white;
   height: 2px;
+  -webkit-box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
   clear: both;
 }
@@ -64,22 +67,39 @@ pre {
 
 .bordered {
   border: 6px solid white;
+  -webkit-box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
   padding: 0px !important;
 }
 
-#element_1, #element_2 {
+#element_1,
+#element_2 {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   height: 240px;
 }
 
-ul.scale-on-hover, ul.cover-fade-in, ul.cover-slide-in, ul.cover-scale-out, ul.cover-slide-dynamic {
+ul.scale-on-hover,
+ul.cover-fade-in,
+ul.cover-slide-in,
+ul.cover-scale-out,
+ul.cover-slide-dynamic {
   list-style: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   padding: 3px;
   margin: 0px;
 }
-ul.scale-on-hover li, ul.cover-fade-in li, ul.cover-slide-in li, ul.cover-scale-out li, ul.cover-slide-dynamic li {
+
+ul.scale-on-hover li,
+ul.cover-fade-in li,
+ul.cover-slide-in li,
+ul.cover-scale-out li,
+ul.cover-slide-dynamic li {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   width: 310px;
   height: 200px;
@@ -87,16 +107,31 @@ ul.scale-on-hover li, ul.cover-fade-in li, ul.cover-slide-in li, ul.cover-scale-
   margin-bottom: 12px;
   float: left;
 }
-ul.scale-on-hover li:nth-child(3n+1), ul.cover-fade-in li:nth-child(3n+1), ul.cover-slide-in li:nth-child(3n+1), ul.cover-scale-out li:nth-child(3n+1), ul.cover-slide-dynamic li:nth-child(3n+1) {
+
+ul.scale-on-hover li:nth-child(3n+1),
+ul.cover-fade-in li:nth-child(3n+1),
+ul.cover-slide-in li:nth-child(3n+1),
+ul.cover-scale-out li:nth-child(3n+1),
+ul.cover-slide-dynamic li:nth-child(3n+1) {
   margin-left: 0;
 }
-ul.scale-on-hover li .cover, ul.cover-fade-in li .cover, ul.cover-slide-in li .cover, ul.cover-scale-out li .cover, ul.cover-slide-dynamic li .cover {
+
+ul.scale-on-hover li .cover,
+ul.cover-fade-in li .cover,
+ul.cover-slide-in li .cover,
+ul.cover-scale-out li .cover,
+ul.cover-slide-dynamic li .cover {
   background: rgba(248, 123, 70, 0.6);
   position: relative;
   width: 100%;
   height: 100%;
 }
-ul.scale-on-hover li .cover .crc, ul.cover-fade-in li .cover .crc, ul.cover-slide-in li .cover .crc, ul.cover-scale-out li .cover .crc, ul.cover-slide-dynamic li .cover .crc {
+
+ul.scale-on-hover li .cover .crc,
+ul.cover-fade-in li .cover .crc,
+ul.cover-slide-in li .cover .crc,
+ul.cover-scale-out li .cover .crc,
+ul.cover-slide-dynamic li .cover .crc {
   position: absolute;
   margin: auto;
   left: 0px;
@@ -108,7 +143,12 @@ ul.scale-on-hover li .cover .crc, ul.cover-fade-in li .cover .crc, ul.cover-slid
   border: 2px solid #ddd;
   border-radius: 50%;
 }
-ul.scale-on-hover li .cover .crc .hor, ul.cover-fade-in li .cover .crc .hor, ul.cover-slide-in li .cover .crc .hor, ul.cover-scale-out li .cover .crc .hor, ul.cover-slide-dynamic li .cover .crc .hor {
+
+ul.scale-on-hover li .cover .crc .hor,
+ul.cover-fade-in li .cover .crc .hor,
+ul.cover-slide-in li .cover .crc .hor,
+ul.cover-scale-out li .cover .crc .hor,
+ul.cover-slide-dynamic li .cover .crc .hor {
   position: absolute;
   margin: auto;
   left: 0;
@@ -119,7 +159,12 @@ ul.scale-on-hover li .cover .crc .hor, ul.cover-fade-in li .cover .crc .hor, ul.
   height: 2px;
   background: #ddd;
 }
-ul.scale-on-hover li .cover .crc .ver, ul.cover-fade-in li .cover .crc .ver, ul.cover-slide-in li .cover .crc .ver, ul.cover-scale-out li .cover .crc .ver, ul.cover-slide-dynamic li .cover .crc .ver {
+
+ul.scale-on-hover li .cover .crc .ver,
+ul.cover-fade-in li .cover .crc .ver,
+ul.cover-slide-in li .cover .crc .ver,
+ul.cover-scale-out li .cover .crc .ver,
+ul.cover-slide-dynamic li .cover .crc .ver {
   position: absolute;
   margin: auto;
   left: 0;
@@ -132,6 +177,8 @@ ul.scale-on-hover li .cover .crc .ver, ul.cover-fade-in li .cover .crc .ver, ul.
 }
 
 .wtf {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   width: 234px;
   height: 180px;

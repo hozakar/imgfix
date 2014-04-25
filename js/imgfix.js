@@ -5,7 +5,25 @@
 $(element).imgfix({
 	fixin: 0,
 	scale: 1,
-	defaultscale: 1,
+	grayscale: null,
+	sepia: null,
+	hue: null,
+	saturate: null,
+	invert: null,
+	brightness: null,
+	contrast: null,
+	blur: null,
+	defaults: {
+		scale: 1,
+		grayscale: null,
+		sepia: null,
+		hue: null,
+		saturate: null,
+		invert: null,
+		brightness: null,
+		contrast: null,
+		blur: null,
+	}
 	width: null,
 	height: null,
 	protectaspectratio: 0,
@@ -70,11 +88,31 @@ Default value for
 			var el = family.element;
 
 			if(!param.cover) param.cover = {};
+			if(!param.defaults) param.defaults = {};
 			param = {
 				fixin: param.fixin ? 1 : 0,
 				scale: param.scale ? param.scale : 1,
 				easing: param.easing ? param.easing : '',
-				defaultscale: param.defaultscale || param.defaultScale ? param.defaultscale || param.defaultScale : 1,
+				interval: parseInt(param.interval) >= 0 ? param.interval : 400,
+				grayscale: parseInt(param.grayscale) >= 0 ? param.grayscale : null,
+				sepia: parseInt(param.sepia) >= 0 ? param.sepia : null,
+				hue: parseInt(param.hue) >= 0 ? param.hue : null,
+				saturate: parseInt(param.saturate) >= 0 ? param.saturate : null,
+				invert: parseInt(param.invert) >= 0 ? param.invert : null,
+				brightness: parseInt(param.brightness) >= 0 ? param.brightness : null,
+				contrast: parseInt(param.contrast) >= 0 ? param.contrast : null,
+				blur: parseInt(param.blur) >= 0 ? param.blur : null,
+				defaults: {
+					scale: param.defaults.scale ? param.defaults.scale : 1,
+					grayscale: parseInt(param.defaults.grayscale) >= 0 ? param.defaults.grayscale : null,
+					sepia: parseInt(param.defaults.sepia) >= 0 ? param.defaults.sepia : null,
+					hue: parseInt(param.defaults.hue) >= 0 ? param.defaults.hue : null,
+					saturate: parseInt(param.defaults.saturate) >= 0 ? param.defaults.saturate : null,
+					invert: parseInt(param.defaults.invert) >= 0 ? param.defaults.invert : null,
+					brightness: parseInt(param.defaults.brightness) >= 0 ? param.defaults.brightness : null,
+					contrast: parseInt(param.defaults.contrast) >= 0 ? param.defaults.contrast : null,
+					blur: parseInt(param.defaults.blur) >= 0 ? param.defaults.blur : null,
+				},
 				width: param.width ? param.width : null,
 				height: param.height ? param.height : null,
 				protectaspectratio: param.protectaspectratio || param.protectAspectRatio ? param.protectaspectratio || param.protectAspectRatio : null,
@@ -88,8 +126,7 @@ Default value for
 					interval: param.cover.interval ? param.cover.interval : 400
 				}
 			}
-			param.interval = param.interval ? param.interval : (param.scale == 1 ? 0 : 400);
-			
+
 			family.parameters = param;
 			el.css('overflow', 'hidden');
 			for(var i = 0; i < el.length; i++) {
@@ -102,9 +139,25 @@ Default value for
 				if(rp) {
 					if($cel.data('fix-img') == null) $cel.data('fix-img', '');
 					$cel.data('fix-fixin', param.fixin ? param.fixin : $cel.data('fix-fixin'));
-					$cel.data('fix-defaultscale', param.defaultscale ? param.defaultscale : $cel.data('fix-defaultscale'));
-					$cel.data('fix-scale', (param.scale ? param.scale : $cel.data('fix-scale')) * $cel.data('fix-defaultscale'));
+					$cel.data('fix-defaults-scale', param.defaults.scale ? param.defaults.scale : $cel.data('fix-defaults-scale'));
+					$cel.data('fix-defaults-grayscale', param.defaults.grayscale != null ? param.defaults.grayscale : $cel.data('fix-grayscale'));
+					$cel.data('fix-defaults-sepia', param.defaults.sepia != null ? param.defaults.sepia : $cel.data('fix-sepia'));
+					$cel.data('fix-defaults-hue', param.defaults.hue != null ? param.defaults.hue : $cel.data('fix-hue'));
+					$cel.data('fix-defaults-saturate', param.defaults.saturate != null ? param.defaults.saturate : $cel.data('fix-saturate'));
+					$cel.data('fix-defaults-invert', param.defaults.invert != null ? param.defaults.invert : $cel.data('fix-invert'));
+					$cel.data('fix-defaults-brightness', param.defaults.brightness != null ? param.defaults.brightness : $cel.data('fix-brightness'));
+					$cel.data('fix-defaults-contrast', param.defaults.contrast != null ? param.defaults.contrast : $cel.data('fix-contrast'));
+					$cel.data('fix-defaults-blur', param.defaults.blur != null ? param.defaults.blur : $cel.data('fix-blur'));
+					$cel.data('fix-scale', (param.scale ? param.scale : $cel.data('fix-scale')) * $cel.data('fix-defaults-scale'));
 					$cel.data('fix-interval', param.interval ? param.interval : $cel.data('fix-interval'));
+					$cel.data('fix-grayscale', param.grayscale != null ? param.grayscale : $cel.data('fix-grayscale'));
+					$cel.data('fix-sepia', param.sepia != null ? param.sepia : $cel.data('fix-sepia'));
+					$cel.data('fix-hue', param.hue != null ? param.hue : $cel.data('fix-hue'));
+					$cel.data('fix-saturate', param.saturate != null ? param.saturate : $cel.data('fix-saturate'));
+					$cel.data('fix-invert', param.invert != null ? param.invert : $cel.data('fix-invert'));
+					$cel.data('fix-brightness', param.brightness != null ? param.brightness : $cel.data('fix-brightness'));
+					$cel.data('fix-contrast', param.contrast != null ? param.contrast : $cel.data('fix-contrast'));
+					$cel.data('fix-blur', param.blur != null ? param.blur : $cel.data('fix-blur'));
 					$cel.data('fix-width', param.width ? param.width : $cel.data('fix-width'));
 					$cel.data('fix-height', param.height ? param.height : $cel.data('fix-height'));
 					$cel.data('fix-protect-aspect-ratio', param.protectaspectratio ? param.protectaspectratio : $cel.data('fix-protect-aspect-ratio'));
@@ -119,9 +172,25 @@ Default value for
 				} else {
 					if($cel.data('fix-img') == null) $cel.data('fix-img', '');
 					$cel.data('fix-fixin', $cel.data('fix-fixin') == null ? param.fixin : $cel.data('fix-fixin'));
-					$cel.data('fix-defaultscale', $cel.data('fix-defaultscale') == null ? param.defaultscale : $cel.data('fix-defaultscale'));
-					$cel.data('fix-scale', ($cel.data('fix-scale') == null ? param.scale : $cel.data('fix-scale')) * $cel.data('fix-defaultscale'));
+					$cel.data('fix-defaults-scale', $cel.data('fix-defaults-scale') == null ? param.defaults.scale : $cel.data('fix-defaults-scale'));
+					$cel.data('fix-defaults-grayscale', $cel.data('fix-defaults-grayscale') == null ? param.defaults.grayscale : $cel.data('fix-defaults-grayscale'));
+					$cel.data('fix-defaults-sepia', $cel.data('fix-defaults-sepia') == null ? param.defaults.sepia : $cel.data('fix-defaults-sepia'));
+					$cel.data('fix-defaults-hue', $cel.data('fix-defaults-hue') == null ? param.defaults.hue : $cel.data('fix-defaults-hue'));
+					$cel.data('fix-defaults-saturate', $cel.data('fix-defaults-saturate') == null ? param.defaults.saturate : $cel.data('fix-defaults-saturate'));
+					$cel.data('fix-defaults-invert', $cel.data('fix-defaults-invert') == null ? param.defaults.invert : $cel.data('fix-defaults-invert'));
+					$cel.data('fix-defaults-brightness', $cel.data('fix-defaults-brightness') == null ? param.defaults.brightness : $cel.data('fix-defaults-brightness'));
+					$cel.data('fix-defaults-contrast', $cel.data('fix-defaults-contrast') == null ? param.defaults.contrast : $cel.data('fix-defaults-contrast'));
+					$cel.data('fix-defaults-blur', $cel.data('fix-defaults-blur') == null ? param.defaults.blur : $cel.data('fix-defaults-blur'));
+					$cel.data('fix-scale', ($cel.data('fix-scale') == null ? param.scale : $cel.data('fix-scale')) * $cel.data('fix-defaults-scale'));
 					$cel.data('fix-interval', $cel.data('fix-interval') == null ? param.interval : $cel.data('fix-interval'));
+					$cel.data('fix-grayscale', $cel.data('fix-grayscale') == null ? param.grayscale : $cel.data('fix-grayscale'));
+					$cel.data('fix-sepia', $cel.data('fix-sepia') == null ? param.sepia : $cel.data('fix-sepia'));
+					$cel.data('fix-hue', $cel.data('fix-hue') == null ? param.hue : $cel.data('fix-hue'));
+					$cel.data('fix-saturate', $cel.data('fix-saturate') == null ? param.saturate: $cel.data('fix-saturate'));
+					$cel.data('fix-invert', $cel.data('fix-invert') == null ? param.invert : $cel.data('fix-invert'));
+					$cel.data('fix-brightness', $cel.data('fix-brightness') == null ? param.brightness : $cel.data('fix-brightness'));
+					$cel.data('fix-contrast', $cel.data('fix-contrast') == null ? param.contrast : $cel.data('fix-contrast'));
+					$cel.data('fix-blur', $cel.data('fix-blur') == null ? param.blur : $cel.data('fix-blur'));
 					$cel.data('fix-width', $cel.data('fix-width') == null ? param.width : $cel.data('fix-width'));
 					$cel.data('fix-height', $cel.data('fix-height') == null ? param.height : $cel.data('fix-height'));
 					$cel.data('fix-protect-aspect-ratio', $cel.data('fix-protect-aspect-ratio') == null ? param.protectaspectratio : $cel.data('fix-protect-aspect-ratio'));
@@ -282,6 +351,51 @@ Default value for
 		/* Daha önce oluşturulmuş stil varsa sil */
 		$('#imgfix_img_style_for_' + topID).remove();
 		
+		/* default filterlar */
+		var defFilterStr = '';
+		if(
+			$dc.data('fix-defaults-grayscale') != null ||
+			$dc.data('fix-defaults-sepia') != null ||
+			$dc.data('fix-defaults-hue') != null ||
+			$dc.data('fix-defaults-saturate') != null ||
+			$dc.data('fix-defaults-invert') != null ||
+			$dc.data('fix-defaults-brightness') != null ||
+			$dc.data('fix-defaults-contrast') != null ||
+			$dc.data('fix-defaults-blur') != null
+		) {
+			defFilterStr = $dc.data('fix-defaults-grayscale') != null ? 'grayscale(' + parseInt($dc.data('fix-defaults-grayscale')) + '%) ' : '';
+			defFilterStr += $dc.data('fix-defaults-sepia') != null ? 'sepia(' + parseInt($dc.data('fix-defaults-sepia')) + '%) ' : '';
+			defFilterStr += $dc.data('fix-defaults-hue') != null ? 'hue-rotate(' + parseInt($dc.data('fix-defaults-hue')) + 'deg) ' : '';
+			defFilterStr += $dc.data('fix-defaults-saturate') != null ? 'saturate(' + parseInt($dc.data('fix-defaults-saturate')) + 'deg) ' : '';
+			defFilterStr += $dc.data('fix-defaults-invert') != null ? 'invert(' + parseInt($dc.data('fix-defaults-invert')) + '%) ' : '';
+			defFilterStr += $dc.data('fix-defaults-brightness') != null ? 'brightness(' + parseInt($dc.data('fix-defaults-brightness')) + '%) ' : '';
+			defFilterStr += $dc.data('fix-defaults-contrast') != null ? 'contrast(' + parseInt($dc.data('fix-defaults-contrast')) + '%) ' : '';
+			defFilterStr += $dc.data('fix-defaults-blur') != null ? 'blur(' + parseInt($dc.data('fix-defaults-blur')) + 'px) ' : '';
+		}
+		if(defFilterStr) defFilterStr = 'filter: ' + defFilterStr + '; -webkit-filter: ' + defFilterStr + ';';
+		/* filter uygulanacak mı? */
+		var filterStr = '';
+		if(
+			$dc.data('fix-grayscale') != null ||
+			$dc.data('fix-sepia') != null ||
+			$dc.data('fix-hue') != null ||
+			$dc.data('fix-saturate') != null ||
+			$dc.data('fix-invert') != null ||
+			$dc.data('fix-brightness') != null ||
+			$dc.data('fix-contrast') != null ||
+			$dc.data('fix-blur') != null
+		) {
+			filterStr = $dc.data('fix-grayscale') != null ? 'grayscale(' + parseInt($dc.data('fix-grayscale')) + '%) ' : ($dc.data('fix-defaults-grayscale') != null ? 'grayscale(' + parseInt($dc.data('fix-defaults-grayscale')) + '%) ' : '');
+			filterStr += $dc.data('fix-sepia') != null ? 'sepia(' + parseInt($dc.data('fix-sepia')) + '%) ' : ($dc.data('fix-defaults-sepia') != null ? 'sepia(' + parseInt($dc.data('fix-defaults-sepia')) + '%) ' : '');
+			filterStr += $dc.data('fix-hue') != null ? 'hue-rotate(' + parseInt($dc.data('fix-hue')) + 'deg) ' : ($dc.data('fix-defaults-hue') != null ? 'hue-rotate(' + parseInt($dc.data('fix-defaults-hue')) + 'deg) ' : '');
+			filterStr += $dc.data('fix-saturate') != null ? 'saturate(' + parseInt($dc.data('fix-saturate')) + '%) ' : ($dc.data('fix-defaults-saturate') != null ? 'saturate(' + parseInt($dc.data('fix-defaults-saturate')) + '%) ' : '');
+			filterStr += $dc.data('fix-invert') != null ? 'invert(' + parseInt($dc.data('fix-invert')) + '%) ' : ($dc.data('fix-defaults-invert') != null ? 'invert(' + parseInt($dc.data('fix-defaults-invert')) + '%) ' : '');
+			filterStr += $dc.data('fix-brightness') != null ? 'brightness(' + parseInt($dc.data('fix-brightness')) + '%) ' : ($dc.data('fix-defaults-brightness') != null ? 'brightness(' + parseInt($dc.data('fix-defaults-brightness')) + '%) ' : '');
+			filterStr += $dc.data('fix-contrast') != null ? 'contrast(' + parseInt($dc.data('fix-contrast')) + '%) ' : ($dc.data('fix-defaults-contrast') != null ? 'contrast(' + parseInt($dc.data('fix-defaults-contrast')) + '%) ' : '');
+			filterStr += $dc.data('fix-blur') != null ? 'blur(' + parseInt($dc.data('fix-blur')) + 'px) ' : ($dc.data('fix-defaults-blur') != null ? 'blur(' + parseInt($dc.data('fix-defaults-blur')) + 'px) ' : '');
+		}
+		if(filterStr) filterStr = 'filter: ' + filterStr + ' !important; -webkit-filter: ' + filterStr + ' !important;';
+		
 		/* Hesaplanan değerler ile yeni stil oluştur */
 		$('head').append(
 			'<style id="imgfix_img_style_for_' + topID + '">' +
@@ -297,14 +411,16 @@ Default value for
 					'margin: auto;' +
 					'-webkit-transition: all ' + (parseInt($dc.data('fix-interval')) / 1000) + 's ' + $dc.data('fix-easing') + ' ;' +
 					'transition: all ' + (parseInt($dc.data('fix-interval')) / 1000) + 's ' + $dc.data('fix-easing') + ';' +
-					'-webkit-transform: scale(' + $dc.data('fix-defaultscale') + ');' +
-					'-ms-transform: scale(' + $dc.data('fix-defaultscale') + ');' +
-					'transform: scale(' + $dc.data('fix-defaultscale') + ');' +
+					'-webkit-transform: scale(' + $dc.data('fix-defaults-scale') + ');' +
+					'-ms-transform: scale(' + $dc.data('fix-defaults-scale') + ');' +
+					'transform: scale(' + $dc.data('fix-defaults-scale') + ');' +
+					defFilterStr + 
 				'}' +
 				'#' + topID + ':hover .imgfix_src_img{' +
 					'-webkit-transform: scale(' + $dc.data('fix-scale') + ');' +
 					'-ms-transform: scale(' + $dc.data('fix-scale') + ');' +
 					'transform: scale(' + $dc.data('fix-scale') + ');' +
+					filterStr +
 				'}' +
 			'</style>'
 		);
