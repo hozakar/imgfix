@@ -65,17 +65,35 @@ cover-scale options:
 	out
 
 Default value for
-    fixin               => 0
-    scale               => 1
-    defaultscale	    => 1
-    width               => null
-    height              => null
-    protectaspectratio  => 0
-    interval            => 400
-    easing              => ease
-    cover-easing        => ease
-    cover-delay         => 0
-    cover-interval      => 400
+    fixin                   => 0
+    scale                   => 1
+	grayscale               => null
+	sepia                   => null
+	hue                     => null
+	saturate                => null
+	invert                  => null
+	brightness              => null
+	contrast                => null
+	blur                    => null
+    width                   => null
+    height                  => null
+    defaults-scale          => 1
+	defaults-grayscale      => null
+	defaults-sepia          => null
+	defaults-hue            => null
+	defaults-saturate       => null
+	defaults-invert         => null
+	defaults-brightness     => null
+	defaults-contrast       => null
+	defaults-blur           => null
+    width                   => null
+    height                  => null
+    protectaspectratio      => 0
+    interval                => 400
+    easing                  => ease
+    cover-easing            => ease
+    cover-delay             => 0
+    cover-interval          => 400
 
 ******************************* */
 

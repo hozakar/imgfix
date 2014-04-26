@@ -39,7 +39,13 @@
         <div class="container">
             <h2>Examples</h2>
             <h3>Simple Usage</h3>
-            <p>Simply apply <strong>.imgfix()</strong> to an element.</p>
+            <p>
+                First you need to include necessary js files.
+            </p>
+            <pre>
+&lt;script src=&quot;//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;js/imgfix.min.js&quot;&gt;&lt;/script&gt;</pre>
+            <p>Then, simply apply <strong>.imgfix()</strong> to an element.</p>
             <p>You can either place an image inside the element,</p>
             <pre>
 &lt;div id=&quot;element_1&quot;&gt;
@@ -72,37 +78,61 @@
         <div class="bar"></div>
 
         <div class="container">
-            <h3>Scale image on hover</h3>
+            <h3>Scale and filter on hover</h3>
             <p>
-                Scale effect may be applied on hover.
+                Filter (webkit) and scale effects may be applied on hover.
             </p>
             <pre>
-&lt;ul class=&quot;scale-on-hover&quot;&gt;
-    &lt;li data-fix-img=&quot;img/img03.jpg&quot;&gt;&lt;/li&gt;
-    &lt;li data-fix-img=&quot;img/img04.jpg&quot;&gt;&lt;/li&gt;
-    &lt;li&gt;
+&lt;ul class=&quot;on-hover&quot;&gt;
+    &lt;li class=&quot;scale&quot; data-fix-img=&quot;img/img03.jpg&quot;&gt;&lt;/li&gt;
+    &lt;li class=&quot;grayscale&quot; data-fix-img=&quot;img/img04.jpg&quot;&gt;&lt;/li&gt;
+    &lt;li class=&quot;sepia&quot;&gt;
         &lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;img/img05.jpg&quot; alt=&quot;img05&quot; /&gt;&lt;/a&gt;
     &lt;/li&gt;
 &lt;/ul&gt;
 &lt;script&gt;
-    $(&#39;ul.scale-on-hover li&#39;).imgfix({
-        scale: 1.4
+    $(&#39;.scale&#39;).imgfix({
+        scale: 3,
+        interval: 1200
+    });
+    $(&#39;.grayscale&#39;).imgfix({
+        grayscale: 0,
+        defaults: {
+            grayscale: 100
+        }
+    });
+    $(&#39;.sepia&#39;).imgfix({
+        scale: 1.2,
+        sepia: 50,
+        interval: 800
     });
 &lt;/script&gt;</pre>
 
         </div>
 
         <div class="container">
-            <ul class="scale-on-hover">
-                <li class="bordered" data-fix-img="img/img03.jpg"></li>
-                <li class="bordered" data-fix-img="img/img04.jpg"></li>
-                <li class="bordered">
+            <ul class="on-hover">
+                <li class="scale bordered" data-fix-img="img/img03.jpg"></li>
+                <li class="grayscale bordered" data-fix-img="img/img04.jpg"></li>
+                <li class="sepia bordered">
                     <a href="#"><img src="img/img05.jpg" alt="img05" /></a>
                 </li>
             </ul>
             <script>
-                $('ul.scale-on-hover li').imgfix({
-                    scale: 1.4
+                $('.scale').imgfix({
+                    scale: 3,
+                    interval: 1200
+                });
+                $('.grayscale').imgfix({
+                    grayscale: 0,
+                    defaults: {
+                        grayscale: 100
+                    }
+                });
+                $('.sepia').imgfix({
+                    scale: 1.2,
+                    sepia: 50,
+                    interval: 800
                 });
             </script>
         </div>
@@ -242,7 +272,7 @@
         </div>
 
         <div class="container">
-            <h4>Cover loads visible and scales out on hover</h4>
+            <h4>Cover layer scales out on hover</h4>
 <pre>
 &lt;ul class=&quot;cover-scale-out&quot;&gt;
     &lt;li data-fix-img=&quot;img/img04.jpg&quot;&gt;

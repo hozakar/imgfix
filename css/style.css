@@ -80,7 +80,7 @@ pre {
   height: 240px;
 }
 
-ul.scale-on-hover,
+ul.on-hover,
 ul.cover-fade-in,
 ul.cover-slide-in,
 ul.cover-scale-out,
@@ -93,7 +93,7 @@ ul.cover-slide-dynamic {
   margin: 0px;
 }
 
-ul.scale-on-hover li,
+ul.on-hover li,
 ul.cover-fade-in li,
 ul.cover-slide-in li,
 ul.cover-scale-out li,
@@ -108,7 +108,7 @@ ul.cover-slide-dynamic li {
   float: left;
 }
 
-ul.scale-on-hover li:nth-child(3n+1),
+ul.on-hover li:nth-child(3n+1),
 ul.cover-fade-in li:nth-child(3n+1),
 ul.cover-slide-in li:nth-child(3n+1),
 ul.cover-scale-out li:nth-child(3n+1),
@@ -116,7 +116,7 @@ ul.cover-slide-dynamic li:nth-child(3n+1) {
   margin-left: 0;
 }
 
-ul.scale-on-hover li .cover,
+ul.on-hover li .cover,
 ul.cover-fade-in li .cover,
 ul.cover-slide-in li .cover,
 ul.cover-scale-out li .cover,
@@ -127,7 +127,7 @@ ul.cover-slide-dynamic li .cover {
   height: 100%;
 }
 
-ul.scale-on-hover li .cover .crc,
+ul.on-hover li .cover .crc,
 ul.cover-fade-in li .cover .crc,
 ul.cover-slide-in li .cover .crc,
 ul.cover-scale-out li .cover .crc,
@@ -144,7 +144,7 @@ ul.cover-slide-dynamic li .cover .crc {
   border-radius: 50%;
 }
 
-ul.scale-on-hover li .cover .crc .hor,
+ul.on-hover li .cover .crc .hor,
 ul.cover-fade-in li .cover .crc .hor,
 ul.cover-slide-in li .cover .crc .hor,
 ul.cover-scale-out li .cover .crc .hor,
@@ -160,7 +160,7 @@ ul.cover-slide-dynamic li .cover .crc .hor {
   background: #ddd;
 }
 
-ul.scale-on-hover li .cover .crc .ver,
+ul.on-hover li .cover .crc .ver,
 ul.cover-fade-in li .cover .crc .ver,
 ul.cover-slide-in li .cover .crc .ver,
 ul.cover-scale-out li .cover .crc .ver,
