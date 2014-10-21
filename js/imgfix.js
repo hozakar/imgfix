@@ -129,7 +129,7 @@ Default value for
 					invert: parseInt(param.defaults.invert) >= 0 ? param.defaults.invert : null,
 					brightness: parseInt(param.defaults.brightness) >= 0 ? param.defaults.brightness : null,
 					contrast: parseInt(param.defaults.contrast) >= 0 ? param.defaults.contrast : null,
-					blur: parseInt(param.defaults.blur) >= 0 ? param.defaults.blur : null,
+					blur: parseInt(param.defaults.blur) >= 0 ? param.defaults.blur : null
 				},
 				width: param.width ? param.width : null,
 				height: param.height ? param.height : null,
@@ -751,7 +751,7 @@ Default value for
 		}
 		bl_imgfix.init(bl_imgfix.family[id], refreshParameters);
 		$(window).resize(function(){
-			bl_imgfix.init(bl_imgfix.family[id]);
+			bl_imgfix.init(bl_imgfix.family[id], true);
 		});
 	}
 	/* End: Plug-in Start */
