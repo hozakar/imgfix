@@ -425,6 +425,7 @@ Default value for
 					'z-index: 0;' +
 					'width: ' + parseInt(w + 1) + 'px;' +
 					'height: ' + parseInt(h + 1) + 'px;' +
+					'max-width: auto !important; min-width: auto !important;' + //Yunus dedi yaptık
 					'position: absolute;' +
 					'margin: auto;' +
 					'-webkit-transition: all ' + (parseInt($dc.data('fix-interval')) / 1000) + 's ' + $dc.data('fix-easing') + ' ;' +
